@@ -12,10 +12,31 @@
 
     <h1>Ara todo app</h1>
 
-    <button onclick="todolist.displayTodos()" type="button" name="button">displayTodos</button>
-    <hr>
-    <button onclick="todolist.toggleAll()"    type="button" name="button">toggleAll</button>
 
+    <div class="">
+      <button onclick="handlers.displayTodos()" type="button" name="button">displayTodos</button>
+      <button onclick="handlers.toggleAll()"    type="button" name="button">toggleAll</button>
+    </div>
+    <div class="">
+      <button onclick="handlers.addTodo()" type="button" name="button">addTodo</button>
+      <input id="addTodoInput" type="text" name="" value="">
+    </div>
+    <div class="">
+      <button onclick="handlers.changeTodo()" type="button" name="button">changeTodo</button>
+      <input id="changePosInput" type="number" name="" value="">
+      <input id="changeTextInput" type="text" name="" value="">
+    </div>
+    <div class="">
+      <button id="deleteButton" onclick="handlers.deleteTodo()" type="button" name="button">deleteTodo</button>
+      <input id="deletePosition" type="number" name="" value="">
+    </div>
+    <div class="">
+      <button onclick="handlers.toggleCompleted()" type="button" name="button">toggle</button>
+      <input id="togglesNum" type="number" name="" value="" placeholder="position number">
+    </div>
+    <ul id="theUL">
+
+    </ul>
 
 
 

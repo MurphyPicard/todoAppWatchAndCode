@@ -2,6 +2,7 @@ var todolist = {
   todos: [],
   // displays the list
   displayTodos: function(){
+    // debugger;
     if(this.todos.length < 1){
       console.log("There are no todos yet.  Use addTodo if you want.");
     }else{
@@ -66,8 +67,36 @@ var todolist = {
       this.displayTodos();
     }
   }
-
-
-
-
 };
+
+// refactored nicely
+var handlers = {
+  displayTodos: function(){
+    todolist.displayTodos();
+  },
+  addTodo: function(){
+    var addTodoText = document.getElementById('addTodoInput');
+    todolist.addTodo(addTodoText.value);
+    addTodoText.value = '';
+  },
+  changeTodo: function(){
+    var changePositionInput = document.getElementById('changePosInput');
+    var changeTextInput = document.getElementById('changeTextInput');
+    todolist.changeTodo(changePositionInput.valueAsNumber, changeTextInput.value);
+    changeTextInput.value = '';
+    changePositionInput.value = '';
+  },
+  deleteTodo: function(){
+    var deleteMe = document.getElementById('deletePosition');
+    todolist.deleteTodo(deleteMe.valueAsNumber);
+    deleteMe.value = '';
+  },
+  toggleCompleted: function(){
+    var togglesNum = document.getElementById('togglesNum');
+    todolist.toggleCompleted(togglesNum.valueAsNumber);
+    togglesNum.value = '';
+  },
+  toggleAll: function(){
+    todolist.toggleAll();
+  }
+}//handlers
