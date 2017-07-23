@@ -61,10 +61,8 @@ var handlers = {
     changePositionInput.value = '';
     view.displayTodos();
   },
-  deleteTodo: function(){
-    var deleteMe = document.getElementById('deletePosition');
-    todolist.deleteTodo(deleteMe.valueAsNumber);
-    deleteMe.value = '';
+  deleteTodo: function(pos){
+    todolist.deleteTodo(pos);
     view.displayTodos();
   },
   toggleCompleted: function(){
@@ -94,13 +92,31 @@ var view = {
       }else{
         todoTextWithCompletion = "( ) " + todo.todoText;
       }
+      todoLi.id = i;
       todoLi.textContent = todoTextWithCompletion;
+      todoLi.appendChild(this.createDeleteButton());
       todosUl.appendChild(todoLi);
     }//for
-  }//displayTodos
-
-
+  },//displayTodos
+  createDeleteButton: function(){
+    var deleteButton = document.createElement("button");
+    deleteButton.textContent = 'Delete';
+    deleteButton.className = 'deleteButton';
+    return deleteButton;
+  },
+  setUpEventListeners: function(){
+    var todosUl = document.querySelector('ul');
+    todosUl.addEventListener('click', function(event){
+      var elementClicked = event.target;
+      if(elementClicked.className === 'deleteButton'){
+        handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+      }
+    });
+  }
 }//view
+
+// adds the event listener for ul tag 
+view.setUpEventListeners();
 
 
 
